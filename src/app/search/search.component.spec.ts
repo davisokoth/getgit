@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search.component';
+import { SearchResultsComponent } from '../search-results/search-results.component';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -9,7 +10,7 @@ describe('SearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [ SearchComponent ]
+      declarations: [ SearchComponent, SearchResultsComponent ]
     })
     .compileComponents();
   }));
@@ -24,9 +25,15 @@ describe('SearchComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should create a search input field named `searchInput`', async(() => {
-    fixture = TestBed.createComponent(SearchComponent);
-    fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('input[name=searchInput]')).toBeTruthy();
+  }));
+  it('should create a `Search` button named `searchButton`', async(() => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button[name=searchButton]')).toBeTruthy();
+  }));
+  it('should display `Search Results` component when `Search` button is clicked', async(() => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('app-search-results')).toBeTruthy();
   }));
 });

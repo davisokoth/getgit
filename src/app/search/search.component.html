@@ -1,1 +1,3 @@
-<input type="text" class="form-control" [(ngModel)]="search" name="searchInput" placeholder="Search User">
+<input type="text" class="form-control" [(ngModel)]="search" name="searchInput" placeholder="Search Github">
+<button name="searchButton" (click)="doSearch()">Search</button>
+<app-search-results></app-search-results>
