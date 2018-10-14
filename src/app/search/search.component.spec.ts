@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 import { SearchComponent } from './search.component';
-import { SearchResultsComponent } from '../search-results/search-results.component';
+import { UserComponent } from '../user/user.component';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -9,8 +10,8 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
-      declarations: [ SearchComponent, SearchResultsComponent ]
+      imports: [FormsModule, HttpClientModule],
+      declarations: [ SearchComponent, UserComponent ]
     })
     .compileComponents();
   }));
@@ -32,8 +33,12 @@ describe('SearchComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('button[name=searchButton]')).toBeTruthy();
   }));
-  it('should display `Search Results` component when `Search` button is clicked', async(() => {
+  it('should display results in a paginated format', async(() => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('app-search-results')).toBeTruthy();
+    expect(compiled.querySelector('div[name=pagination]')).toBeTruthy();
+  }));
+  it('should display total number of results in a span', async(() => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('span[name=totalCount]')).toBeTruthy();
   }));
 });

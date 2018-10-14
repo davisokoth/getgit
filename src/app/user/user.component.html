@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
+    <img name="avatarImg" class="rounded-circle" width="80" height="80" [src]="user.avatar_url" [alt]="user.login" />
+  </div>
+  <div class="col-xs-9 col-md-9 col-sm-9">
+    <h4>{{user.login}}</h4>
+    <div  name="typeDiv">{{user.type}}</div><br />
+    <div  name="followersDiv">{{user.followers}} followers</div><br />
+    <a href="https://github.com/{{user.login}}" name="userLink">View</a>
+  </div>
+</div>
+<hr>

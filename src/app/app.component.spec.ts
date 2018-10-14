@@ -1,8 +1,14 @@
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import {APP_BASE_HREF} from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { SearchResultsComponent } from './search-results/search-results.component';
+import { UserComponent } from './user/user.component';
+import { UserDetaiComponent } from './user-detai/user-detai.component';
+
+import { routes } from './app.routes';
 
 let fixture: ComponentFixture<AppComponent>;
 let app: AppComponent;
@@ -10,10 +16,11 @@ let app: AppComponent;
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule, HttpClientModule, RouterModule.forRoot(routes)],
       declarations: [
-        AppComponent, SearchComponent, SearchResultsComponent
+        AppComponent, SearchComponent, UserComponent, UserDetaiComponent
       ],
+      providers: [{provide: APP_BASE_HREF, useValue: '/my/app'}]
     }).compileComponents();
   }));
   beforeEach(() => {
@@ -29,10 +36,6 @@ describe('AppComponent', () => {
   }));
   it('should render title in a h1 tag', async(() => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to getgit!');
-  }));
-  it('should render the search component', async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('app-search')).toBeTruthy();
+    expect(compiled.querySelector('h1').textContent).toContain('Get git users');
   }));
 });
