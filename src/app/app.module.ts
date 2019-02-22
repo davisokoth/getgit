@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { CoreModule } from './core/core.module';
+// import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
-import { UserComponent } from './user/user.component';
-import { UserDetaiComponent } from './user-detai/user-detai.component';
 
 import { routes } from './app.routes';
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes)],
-  declarations: [ AppComponent, SearchComponent, UserComponent, UserDetaiComponent ],
+  imports: [ BrowserModule, HttpClientModule, CoreModule, RouterModule.forRoot(routes)], // FormsModule, SharedModule],
+  declarations: [ HeaderComponent, FooterComponent, AppComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })
