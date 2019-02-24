@@ -3,14 +3,20 @@ import { HttpClientModule} from '@angular/common/http';
 import { UserService } from './user.service';
 
 describe('UserService', () => {
+
+  let subject: UserService;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
       providers: [UserService]
-    });
+    }).compileComponents();
   });
 
-  it('should be created', inject([UserService], (service: UserService) => {
-    expect(service).toBeTruthy();
+  beforeEach(inject([UserService], (userService: UserService) => {
+    subject = userService;
   }));
+
+  it('should be created', () => {
+    expect(subject).toBeTruthy();
+  });
 });

@@ -15,6 +15,7 @@ export class MainComponent implements OnInit {
   }
 
   setUsers(users: User[]) {
+    console.log('Emitted!');
     this.users = users;
   }
 

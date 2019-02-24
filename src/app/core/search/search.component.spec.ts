@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { SearchComponent } from './search.component';
 import { UserComponent } from '../user/user.component';
+import { UserService } from '../../services/user.service';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -11,7 +12,8 @@ describe('SearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule],
-      declarations: [ SearchComponent, UserComponent ]
+      declarations: [ SearchComponent, UserComponent ],
+      providers: [UserService]
     })
     .compileComponents();
   }));
@@ -33,12 +35,9 @@ describe('SearchComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('button[name=searchButton]')).toBeTruthy();
   }));
-  it('should display results in a paginated format', async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('div[name=pagination]')).toBeTruthy();
-  }));
-  it('should display total number of results in a span', async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('span[name=totalCount]')).toBeTruthy();
-  }));
+  it('should emit search results', () => {
+    spyOn(component.fetchResults, 'emit');
+    component.emitResults([]);
+    expect(component.fetchResults.emit).toHaveBeenCalledWith([]);
+  });
 });

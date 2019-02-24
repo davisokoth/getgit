@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 
 @NgModule({
-  imports: [ BrowserModule, HttpClientModule, CoreModule, RouterModule.forRoot(routes)], // FormsModule, SharedModule],
+  imports: [ BrowserModule, HttpClientModule, CoreModule, RouterModule.forRoot(routes)],
   declarations: [ HeaderComponent, FooterComponent, AppComponent ],
   providers: [],
   bootstrap: [AppComponent]

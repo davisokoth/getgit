@@ -11,7 +11,6 @@ export class SearchComponent implements OnInit {
 
   @Input() endpoint;
   @Output() fetchResults = new EventEmitter<User[]>();
-  @Output() fetched = new EventEmitter<User[]>();
   search: string;
 
   constructor(private userService: UserService) { }
@@ -22,11 +21,15 @@ export class SearchComponent implements OnInit {
     this.userService.getGitUsers(this.search, 1)
     .subscribe(
       data => {
-        this.fetchResults.emit(data.items);
-        console.log(data);
+        this.emitResults(data.items);
       },
       error => console.log(error)
     );
+  }
+
+  emitResults(results: User[]) {
+    console.log('Emitted!');
+    this.fetchResults.emit(results);
   }
 
 }

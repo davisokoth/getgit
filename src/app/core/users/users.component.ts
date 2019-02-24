@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
-import { InvokeFunctionExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-users',
@@ -23,6 +22,8 @@ export class UsersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // console.log(this.users);
+    this.resetComponentState();
     console.log(this.users);
   }
 

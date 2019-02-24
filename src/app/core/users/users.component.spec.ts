@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UsersComponent } from './users.component';
+import { UserComponent } from '../user/user.component';
+import { UserService } from 'src/app/services/user.service';
+import { HttpClientModule} from '@angular/common/http';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
@@ -8,7 +11,9 @@ describe('UsersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsersComponent ]
+      imports: [HttpClientModule],
+      declarations: [ UserComponent, UsersComponent ],
+      providers: [UserService]
     })
     .compileComponents();
   }));
@@ -16,7 +21,7 @@ describe('UsersComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UsersComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
