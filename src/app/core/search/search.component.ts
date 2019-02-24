@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   @Output() loaded: EventEmitter<any> = new EventEmitter();
 
   search: string;
+  loading = false;
 
   constructor(private userService: UserService) { }
 
@@ -23,12 +24,17 @@ export class SearchComponent implements OnInit {
   }
 
   doSearch() {
+    this.loading = true;
     this.userService.getGitUsers(this.search, 1)
     .subscribe(
       data => {
+        this.loading = false;
         this.emitResults(data);
       },
-      error => console.log(error)
+      error => {
+        this.loading = false;
+        console.log(error);
+      }
     );
   }
 

@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
   prevPage = 0;
   nextPage = 0;
   @Input() totalCount = 0;
+  loading = false;
 
   constructor(
     private userService: UserService
@@ -33,8 +34,10 @@ export class UsersComponent implements OnInit {
   }
 
   getPaginatedUsers(search: string, pageNo: number) {
+    this.loading = true;
     this.userService.getGitUsers(search, pageNo).subscribe(
       data => {
+        this.loading = false;
         this.users = data.items;
         if (this.pageCount >= 1 && pageNo <= this.pageCount) {
           this.pageNumber = pageNo;
@@ -42,7 +45,10 @@ export class UsersComponent implements OnInit {
           this.prevPage = this.pageNumber - 1;
         }
       },
-      error => console.log(error)
+      error => {
+        this.loading = false;
+        console.log(error);
+      }
     );
   }
 

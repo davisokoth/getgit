@@ -6,3 +6,6 @@
         <button name="searchButton" class="btn btn-default" (click)="doSearch()">Search</button>
     </div>
 </div>
+<div *ngIf="loading" class="loadingDiv">
+    <img src="assets/loader.gif" class="loading" />
+</div>
