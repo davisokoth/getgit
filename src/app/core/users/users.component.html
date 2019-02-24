@@ -1,11 +1,11 @@
-<div name="pagination">
-  <button *ngIf="pageNumber > 1" (click)="traversePage(prevPage)" name="pagingBtn">Prev</button>
+<div id="pagination" class="text-center">
+  <a *ngIf="pageNumber > 1" (click)="traversePage(prevPage)" name="pagingBtn">Prev</a>
   Page {{pageNumber}} of {{pageCount}} 
-  <button *ngIf="nextPage < pageCount" (click)="traversePage(nextPage)" name="pagingBtn">Next</button>
-  <span name="totalCount">({{totalCount}} results found)</span>
-  <div name="resultsTable" class="row">
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" *ngFor="let result of users">
-          <app-user [user]="result"></app-user>
-      </div>
-  </div>
+  <a *ngIf="nextPage < pageCount" (click)="traversePage(nextPage)" name="pagingBtn">Next</a> 
+  <span name="totalCount"> ({{totalCount}} results found)</span>
+</div>
+<div name="resultsTable" class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" *ngFor="let result of users">
+        <app-user [user]="result"></app-user>
+    </div>
 </div>
