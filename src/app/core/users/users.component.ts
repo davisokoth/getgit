@@ -12,7 +12,7 @@ export class UsersComponent implements OnInit {
   @Input() users: User[];
   @Input() search: string;
   pageCount = 0;
-  pageNumber = 0;
+  pageNumber = 1;
   prevPage = 0;
   nextPage = 0;
   @Input() totalCount = 0;
@@ -26,7 +26,8 @@ export class UsersComponent implements OnInit {
   }
 
   resetComponentState() {
-    this.pageNumber = 0;
+    this.pageNumber = 1;
+    this.nextPage = 2;
     this.totalCount = this.totalCount;
     this.pageCount = Math.ceil(this.totalCount / 30);
   }

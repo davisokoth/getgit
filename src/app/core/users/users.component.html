@@ -1,8 +1,8 @@
 <div id="pagination" class="text-center">
-  <a *ngIf="pageNumber > 1" (click)="traversePage(prevPage)" name="pagingBtn">Prev</a>
+  <a *ngIf="pageNumber > 1" class="customLink" (click)="traversePage(prevPage)" name="pagingBtn"><<</a> &nbsp;
   Page {{pageNumber}} of {{pageCount}} 
-  <a *ngIf="nextPage < pageCount" (click)="traversePage(nextPage)" name="pagingBtn">Next</a> 
-  <span name="totalCount"> ({{totalCount}} results found)</span>
+  <a *ngIf="nextPage < pageCount" class="customLink"  (click)="traversePage(nextPage)" name="pagingBtn"> >></a> &nbsp; 
+  <span name="totalCount"> &nbsp; | &nbsp; {{totalCount}} results</span>
 </div>
 <div name="resultsTable" class="row">
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" *ngFor="let result of users">
