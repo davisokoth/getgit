@@ -15,19 +15,19 @@ export class UsersComponent implements OnInit {
   pageNumber = 0;
   prevPage = 0;
   nextPage = 0;
-  totalCount = 0;
+  @Input() totalCount = 0;
 
   constructor(
     private userService: UserService
   ) { }
 
   ngOnInit() {
-    // console.log(this.users);
     this.resetComponentState();
-    console.log(this.users);
   }
 
   resetComponentState() {
+    this.pageNumber = 0;
+    this.totalCount = this.totalCount;
     this.pageCount = Math.ceil(this.totalCount / 30);
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/user.model';
+import { GitResult } from 'src/app/models/git-result.model';
 
 @Component({
   selector: 'app-main',
@@ -9,14 +10,19 @@ import {User} from '../../models/user.model';
 export class MainComponent implements OnInit {
 
   users: User[];
+  total_count: number;
   constructor() { }
 
   ngOnInit() {
   }
 
-  setUsers(users: User[]) {
-    console.log('Emitted!');
-    this.users = users;
+  setUsers(result: GitResult) {
+    this.users = result.items;
+    this.total_count = result.total_count;
+  }
+
+  logLoaded() {
+    console.log('Loaded');
   }
 
 }

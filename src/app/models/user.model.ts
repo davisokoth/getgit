@@ -17,6 +17,11 @@ export class User {
     score: number;
     followers: number;
 
+    constructor(login: string, url: string) {
+        this.login = login;
+        this.url = url;
+    }
+
     /*
     deserialize(input: any) {
         Object.assign(this, input);
