@@ -1,7 +1,7 @@
 # getgit
-Simple implementation of git user search.
 [![Build Status](https://travis-ci.com/davisokoth/getgit.svg?branch=master)](https://travis-ci.com/davisokoth/getgit)
 
+Simple implementation of git user search. Just a fun project, nothing fancy.
 
 ## Technologies
 * Angular
