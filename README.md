@@ -1,5 +1,6 @@
 # getgit
 Simple implementation of git user search.
+[![Build Status](https://travis-ci.com/davisokoth/getgit.svg?branch=master)](https://travis-ci.com/davisokoth/getgit)
 
 
 ## Technologies
