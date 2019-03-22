@@ -5,7 +5,6 @@ import { SearchComponent } from './search.component';
 import { UserComponent } from '../user/user.component';
 import { UserService } from '../../services/user.service';
 import { GitResult } from '../../models/git-result.model';
-import { userInfo } from 'os';
 import { User } from 'src/app/models/user.model';
 
 describe('SearchComponent', () => {

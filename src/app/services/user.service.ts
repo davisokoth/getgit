@@ -11,15 +11,26 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   url = environment.URL;
+  apiLink = environment.apiLink;
+
   constructor(private http: HttpClient) {}
 
   /** GET users from git api */
-  getGitUsers (query: string, pageNo: number): Observable<GitResult> {
+  getGitUsers(query: string, pageNo: number): Observable<GitResult> {
     return this.http.get<GitResult>(`${this.url}search/users?q=${query}&page=${pageNo}`);
   }
 
   /** GET number of user's followers */
-  getUserFollowers (query: string): Observable<User[]> {
+  getUserFollowers(query: string): Observable<User[]> {
     return this.http.get<User[]>(`${this.url}users/${query}/followers`);
+  }
+
+  postUser(user: User) {
+    const model = {
+      id: user.id,
+      email: user.email,
+      name: user.name
+    }
+    return this.http.post(`${this.apiLink}CreateProfile`, model);
   }
 }
