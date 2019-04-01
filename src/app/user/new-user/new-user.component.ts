@@ -14,7 +14,7 @@ import * as uuid from 'uuid4';
 export class NewUserComponent implements OnInit {
 
   loginForm: FormGroup;
-  isSubmitted  =  false;
+  isSubmitted  = false;
   email = new FormControl();
   name = new FormControl();
 
