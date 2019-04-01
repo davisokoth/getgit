@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "cypress:open": "$(npm bin)/cypress open",
-    "start": "ng serve",
-    "build": "ng build",
+    "prestart": "ngtw build",
+    "start": "ng serve --aot & ngtw watch",
+    "build": "ngtw build && ng build",
     "test": "ng test",
     "mocha:test": "./node_modules/mocha/bin/mocha --require ts-node/register ./**/*.spec.ts",
     "lint": "ng lint",
