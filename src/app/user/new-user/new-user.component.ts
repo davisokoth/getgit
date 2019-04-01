@@ -9,7 +9,7 @@ import * as uuid from 'uuid4';
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.css']
+  styleUrls: ['./new-user.component.scss']
 })
 export class NewUserComponent implements OnInit {
 
