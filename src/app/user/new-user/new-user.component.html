@@ -1,6 +1,22 @@
-<div class="login">
-  <h2 class="login-header">Sign up</h2>
-      <input type="name" class="form-control" placeholder="What shall we call you?" [formControl]="name">
-      <input type="email" class="form-control" placeholder="What is your email address" [formControl]="email">
-      <button (click)="signUp()" class="btn btn-primary">Submit</button>
+<div class="w-full max-w-xs">
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6">
+    <h2 class="login-header">Sign up</h2>
+    <input 
+      type="name" 
+      class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+      placeholder="What shall we call you?" 
+      [formControl]="name"
+    >
+    <input 
+      type="email" 
+      class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"
+      placeholder="What is your email address" 
+      [formControl]="email"
+    >
+    <button 
+      (click)="signUp()" 
+      class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
+    >Submit</button>
+  </form>
+      
 </div>
