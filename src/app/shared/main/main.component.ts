@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../models/user.model';
-import { GitResult } from 'src/app/models/git-result.model';
+import {User} from '../../shared/models/user.model';
+import { GitResult } from '../../shared/models/git-result.model';
 
 @Component({
   selector: 'app-main',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { GitResult } from '../models/git-result.model';
-import { User } from '../models/user.model';
+import { GitResult } from '../shared/models/git-result.model';
+import { User } from '../shared/models/user.model';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
@@ -30,7 +30,7 @@ export class UserService {
       id: user.id,
       email: user.email,
       name: user.name
-    }
+    };
     return this.http.post(`${this.apiLink}CreateProfile`, model);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { User } from '../../models/user.model';
+import { User } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-user',
@@ -29,8 +29,11 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getUserFollowers(this.user.login)
-    .subscribe(
+    this.getUserFollowers();
+  }
+
+  getUserFollowers() {
+    this.userService.getUserFollowers(this.user.login).subscribe(
       data => this.user.followers = data.length,
       error => console.log(error)
     );

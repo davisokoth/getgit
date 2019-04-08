@@ -1,23 +1,47 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
 import { SearchComponent } from './search.component';
-import { UserComponent } from '../user/user.component';
-import { UserService } from '../../services/user.service';
-import { GitResult } from '../../models/git-result.model';
-import { User } from 'src/app/models/user.model';
+import { GitResult } from '../../shared/models/git-result.model';
+import { User } from '../../shared/models/user.model';
+import { UserService } from 'src/app/services/user.service';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
 
+  class UserMockService {
+    getGitUsers(search, pageNo) {
+      return [{
+        total_count: 2,
+        incomplete_results: false,
+        items: [
+          {
+            login: 'janedoe@jd.com',
+            email: 'janedoe@jd.com',
+            name: 'Jane'
+          },
+          {
+            login: 'janedoe@jd.com',
+            email: 'janedoe@jd.com',
+            name: 'Jane'
+          }
+        ]
+      }];
+    }
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule],
-      declarations: [ SearchComponent, UserComponent ],
-      providers: [UserService]
-    })
-    .compileComponents();
+      imports: [FormsModule],
+      declarations: [ SearchComponent ]
+    });
+    TestBed.overrideComponent(SearchComponent, {
+      set: {
+        providers: [
+          { provide: UserService, useClass: UserMockService }
+        ]
+      }
+    });
   }));
 
   beforeEach(() => {
@@ -35,15 +59,10 @@ describe('SearchComponent', () => {
     expect(compiled.querySelector('input[name=searchInput]')).toBeTruthy();
   }));
 
-  it('should create a `Search` button named `searchButton`', async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('button[name=searchButton]')).toBeTruthy();
-  }));
-
   it('should emit search results', () => {
     spyOn(component.fetchResults, 'emit');
     const item = new GitResult(1, false, [new User('davisokoth', 'www')]);
     component.emitResults(item);
-    expect(component.fetchResults.emit).toHaveBeenCalledWith([]);
+    expect(component.fetchResults.emit).toHaveBeenCalledWith(item);
   });
 });

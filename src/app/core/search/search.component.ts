@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { GitResult } from 'src/app/models/git-result.model';
+import { GitResult } from '../../shared/models/git-result.model';
 
 @Component({
   selector: 'app-search',

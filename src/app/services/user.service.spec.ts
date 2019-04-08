@@ -1,29 +1,30 @@
-import { TestBed, inject } from '@angular/core/testing';
-// import { HttpClientModule} from '@angular/common/http';
-// import { HttpClientTestingModule } from '@angular/httpClient';
+import { TestBed, inject, getTestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { UserService } from './user.service';
 import { of } from 'rxjs'; // Add import
-import { GitResult } from '../models/git-result.model';
+import { GitResult } from '../shared/models/git-result.model';
 
 describe('UsersService', () => {
 
-  let subject: UserService;
+  let service: UserService;
+  let injector: TestBed;
+  let httpMock: HttpTestingController;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      // imports: [HttpClientModule],
+      imports: [HttpClientTestingModule],
       providers: [UserService]
-    }).compileComponents();
+    }); //.compileComponents();
+    injector = getTestBed();
+    service = injector.get(UserService);
+    httpMock = injector.get(HttpTestingController);
   });
-
-  beforeEach(inject([UserService], (userService: UserService) => {
-    subject = userService;
-  }));
 
   it('should be created', () => {
-    expect(subject).toBeTruthy();
+    expect(service).toBeTruthy();
   });
 
-  it('should return a collection of users', () => {
+  it('should return an Observable<GitResult[]>', () => {
     const userResponse: GitResult = {
       total_count: 2,
       incomplete_results: false,
@@ -41,12 +42,17 @@ describe('UsersService', () => {
       ]
     };
     let response;
-    spyOn(subject, 'getGitUsers').and.returnValue(of(userResponse));
-
-    subject.getGitUsers(`query`, 0).subscribe(res => {
+    service.getGitUsers(`query`, 0).subscribe(res => {
       response = res;
+      expect(res.total_count).toBe(2);
+      expect(res).toEqual(userResponse);
     });
+    const req = httpMock.expectOne(`${service.url}search/users?q=query&page=0`);
+    expect(req.request.method).toBe('GET');
+    req.flush(userResponse);
+  });
 
-    expect(response).toEqual(userResponse);
+  afterEach(() => {
+    httpMock.verify();
   });
 });

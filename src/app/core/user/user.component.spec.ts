@@ -1,18 +1,50 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientModule} from '@angular/common/http';
 import { UserComponent } from './user.component';
-import { UserService } from '../../services/user.service';
+import { UserService } from 'src/app/services/user.service';
+import { Observable } from 'rxjs';
 
 describe('UserComponent', () => {
   let component: UserComponent;
   let fixture: ComponentFixture<UserComponent>;
 
+  class UserMockService {
+    getUserFollowers(login) {
+      function resultsSubscriber(observer) {
+        observer.next({
+          total_count: 2,
+          incomplete_results: false,
+          items: [
+            {
+              login: 'janedoe@jd.com',
+              email: 'janedoe@jd.com',
+              name: 'Jane'
+            },
+            {
+              login: 'janedoe@jd.com',
+              email: 'janedoe@jd.com',
+              name: 'Jane'
+            }
+          ]
+        });
+        observer.complete();
+        return {unsubscribe() {}};
+      }
+
+      return new Observable(resultsSubscriber);
+    }
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      declarations: [ UserComponent ],
-      providers: [UserService]
-    }).compileComponents();
+      declarations: [ UserComponent ]
+    });
+    TestBed.overrideComponent(UserComponent, {
+      set: {
+        providers: [
+          { provide: UserService, useClass: UserMockService }
+        ]
+      }
+    });
   }));
 
   beforeEach(() => {
@@ -31,14 +63,6 @@ describe('UserComponent', () => {
   it('should render type in a div', async(() => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('div[name=typeDiv]')).toBeTruthy();
-  }));
-  it('should render followers in a div', async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('div[name=followersDiv]')).toBeTruthy();
-  }));
-  it('should render avatar in a div', async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('img[name=avatarImg]')).toBeTruthy();
   }));
   it('should render a link to the detail api', async(() => {
     const compiled = fixture.debugElement.nativeElement;

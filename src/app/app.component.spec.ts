@@ -1,24 +1,33 @@
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
-import {APP_BASE_HREF} from '@angular/common';
+import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
-import { routes } from './app.routes';
-import { CoreModule } from './core';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+// import { routes } from './app.routes';
+import { Component, OnInit } from '@angular/core';
 
 let fixture: ComponentFixture<AppComponent>;
 let app: AppComponent;
 
+@Component({selector: 'app-footer', template: ''})
+class FooterStubComponent {}
+
+@Component({selector: 'app-header', template: ''})
+class HeaderStubComponent {}
+
+@Component({selector: 'app-main', template: ''})
+class MainStubComponent  implements OnInit {
+  ngOnInit() {
+  }
+}
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule, CoreModule, RouterModule.forRoot(routes)],
+      imports: [FormsModule, RouterModule.forRoot([])],
       declarations: [
-        AppComponent, HeaderComponent, FooterComponent
+        AppComponent, FooterStubComponent, HeaderStubComponent, MainStubComponent
       ],
       providers: [{provide: APP_BASE_HREF, useValue: '/my/app'}]
     }).compileComponents();
@@ -27,21 +36,11 @@ describe('AppComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create the app', async(() => {
     expect(app).toBeTruthy();
-  }));
-
-  it(`should have as title 'getgit'`, async(() => {
-    console.log(app.title);
-    expect(app.title).toEqual('getgit');
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Get git users');
   }));
 
 });

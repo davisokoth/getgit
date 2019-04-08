@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { User } from 'src/app/models/user.model';
+import { User } from '../../shared/models/user.model';
 import * as uuid from 'uuid4';
 
 
@@ -19,7 +18,7 @@ export class NewUserComponent implements OnInit {
   name = new FormControl();
 
   constructor(
-    private userService: UserService, private router: Router, private formBuilder: FormBuilder
+    private userService: UserService // , private router: Router, private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() { }
@@ -30,7 +29,7 @@ export class NewUserComponent implements OnInit {
       name: this.name.value,
       email: this.email.value,
       id: uuid()
-    }
+    };
     this.userService.postUser(user)
     .subscribe(
       data => console.log(data),
