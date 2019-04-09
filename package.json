@@ -6,7 +6,7 @@
     "cypress:open": "$(npm bin)/cypress open",
     "prestart": "ngtw build",
     "start": "ng serve --aot & ngtw watch",
-    "build": "ngtw build && ng build",
+    "build": "ngtw build && ng build --prod",
     "test": "ng test",
     "mocha:test": "./node_modules/mocha/bin/mocha --require ts-node/register ./**/*.spec.ts",
     "lint": "ng lint",
