@@ -11,6 +11,9 @@ cache:
 addons:
   chrome: stable
 
+  before_script:
+  - npm install -g @angular/cli --yes
+
 script:
   - npm run lint
   - xvfb-run npm run test
