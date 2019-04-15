@@ -31,6 +31,6 @@ export class UserService {
       email: user.email,
       name: user.name
     };
-    return this.http.post(`${this.apiLink}CreateProfile`, model);
+    return this.http.post(`${this.apiLink}AddUser`, model);
   }
 }

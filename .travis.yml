@@ -11,7 +11,7 @@ cache:
 addons:
   chrome: stable
 
-  before_script:
+before_script:
   - npm install -g @angular/cli --yes
 
 script:
