@@ -16,13 +16,13 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   /** GET users from git api */
-  getGitUsers(query: string, pageNo: number): Observable<GitResult> {
-    return this.http.get<GitResult>(`${this.url}search/users?q=${query}&page=${pageNo}`);
+  getUsers(query: string, pageNo: number): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiLink}GetUsers`);
   }
 
   /** GET number of user's followers */
   getUserFollowers(query: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}users/${query}/followers`);
+    return this.http.get<User[]>(`${this.apiLink}GetUsers`);
   }
 
   postUser(user: User) {
