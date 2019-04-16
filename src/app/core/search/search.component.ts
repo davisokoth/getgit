@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { GitResult } from '../../shared/models/git-result.model';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-search',
@@ -10,7 +10,7 @@ import { GitResult } from '../../shared/models/git-result.model';
 export class SearchComponent implements OnInit {
 
   @Input() endpoint;
-  @Output() fetchResults: EventEmitter<GitResult> = new EventEmitter<GitResult>();
+  @Output() fetchResults: EventEmitter<User[]> = new EventEmitter<User[]>();
   @Output() loaded: EventEmitter<any> = new EventEmitter();
 
   search: string;
@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
 
   doSearch() {
     this.loading = true;
-    this.userService.getGitUsers(this.search, 1)
+    this.userService.getUsers(this.search, 1)
     .subscribe(
       data => {
         this.loading = false;
@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  emitResults(results: GitResult) {
+  emitResults(results: User[]) {
     this.fetchResults.emit(results);
   }
 }
