@@ -24,12 +24,15 @@ export class UserComponent implements OnInit {
     received_events_url: '',
     type: '',
     score: 0,
-    followers: 0
+    followers: 0,
+    name: '',
+    email: ''
   };
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.getUserFollowers();
+    console.log(this.user);
   }
 
   getUserFollowers() {

@@ -1,9 +1,9 @@
 <div class="profile row">
   <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
-    <img name="avatarImg" class="rounded-circle" width="80" height="80" [src]="user.avatar_url" [alt]="user.login" />
+    <img name="avatarImg" class="rounded-circle" width="80" height="80" [src]="user.avatar_url" [alt]="user.name" />
   </div>
   <div class="col-xs-8 col-md-8 col-sm-8">
-    <h4><a href="https://github.com/{{user.login}}" target="_blank" name="userLink">{{user.login}}</a></h4>
+    <h4><a href="https://github.com/{{user.login}}" target="_blank" name="userLink">{{user.name}}</a></h4>
     <div name="typeDiv">{{user.type}}</div>
     <div *ngIf="user.followers" name="followersDiv">{{user.followers}} followers</div>
   </div>
