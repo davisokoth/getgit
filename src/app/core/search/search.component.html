@@ -1,11 +1,15 @@
-<div class="row">
-    <div class="col-xs-10 col-sm-10 col-md-10">
-        <input type="text" class="form-control" [(ngModel)]="search" name="searchInput" placeholder="Search Github">
+<div class="flex p-2">
+    <div class="w-5/6 h-12">
+        <input type="text"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" 
+            [(ngModel)]="search" 
+            name="searchInput" 
+            placeholder="Search Github">
     </div>
-    <div class="col-xs-2 col-sm-2 col-md-2">
-        <button name="searchButton" class="btn btn-default" (click)="doSearch()">Search</button>
+    <div class="w-1/6 h-12 p-1">
+        <button name="searchButton" class="bg-blue hover:bg-blue-darkest text-white hover:text-white font-bold py-2 px-4 rounded" (click)="doSearch()">Search</button>
     </div>
 </div>
-<div *ngIf="loading" class="loadingDiv">
+<div *ngIf="loading" class="content-center">
     <img src="assets/loader.gif" class="loading" />
 </div>

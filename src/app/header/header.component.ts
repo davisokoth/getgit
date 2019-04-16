@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  siteName = 'Code Reviews | We got your back :)';
   constructor() { }
 
   ngOnInit() {

@@ -32,7 +32,6 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.getUserFollowers();
-    console.log(this.user);
   }
 
   getUserFollowers() {

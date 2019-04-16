@@ -16,6 +16,7 @@ export class NewUserComponent implements OnInit {
   isSubmitted  = false;
   email = new FormControl();
   name = new FormControl();
+  avatar = new FormControl();
 
   constructor(
     private userService: UserService // , private router: Router, private formBuilder: FormBuilder
@@ -28,7 +29,8 @@ export class NewUserComponent implements OnInit {
     const user: User = {
       name: this.name.value,
       email: this.email.value,
-      id: uuid()
+      id: uuid(),
+      avatar_url: this.avatar.value
     };
     this.userService.postUser(user)
     .subscribe(

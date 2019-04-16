@@ -29,7 +29,8 @@ export class UserService {
     const model = {
       id: user.id,
       email: user.email,
-      name: user.name
+      name: user.name,
+      avatar_url: user.avatar_url
     };
     return this.http.post(`${this.apiLink}AddUser`, model);
   }
