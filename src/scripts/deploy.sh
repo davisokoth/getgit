@@ -5,8 +5,8 @@ ngtw build && ng build --prod --base-href / --build-optimizer --output-hashing=a
 echo ""
 echo "Now deploying..."
 echo ""
-rm -r /var/www/html/*
-cp -r dist/* /var/www/html/
+sudo rm -r /var/www/html/*
+sudo cp -r dist/* /var/www/html/
 echo ""
 echo "====================================="
 echo "End build "
