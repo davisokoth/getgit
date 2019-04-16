@@ -6,7 +6,7 @@ echo ""
 echo "Now deploying..."
 echo ""
 sudo rm -r /var/www/html/*
-sudo cp -r dist/* /var/www/html/
+sudo cp -r dist/getgit/* /var/www/html/
 echo ""
 echo "====================================="
 echo "End build "
