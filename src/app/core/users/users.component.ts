@@ -35,21 +35,7 @@ export class UsersComponent implements OnInit {
 
   getPaginatedUsers(search: string, pageNo: number) {
     this.loading = true;
-    this.userService.getUsers(search, pageNo).subscribe(
-      data => {
-        this.loading = false;
-        this.users = data;
-        if (this.pageCount >= 1 && pageNo <= this.pageCount) {
-          this.pageNumber = pageNo;
-          this.nextPage = this.pageNumber + 1;
-          this.prevPage = this.pageNumber - 1;
-        }
-      },
-      error => {
-        this.loading = false;
-        console.log(error);
-      }
-    );
+    this.userService.getUsers(search, pageNo);
   }
 
   traversePage(pageNo) {

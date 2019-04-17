@@ -1,7 +1,7 @@
 import {Deserializable} from './deserializable.model';
 import { User } from './user.model';
 
-export class GitResult {
+export class SearchResult {
     total_count: number;
     incomplete_results: boolean;
     items: User[];

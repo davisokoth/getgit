@@ -1,18 +1,15 @@
-<div class="rounded shadow-lg m-2">
+<div class="rounded shadow m-2">
   <div class="p-3 text-center">
     <img name="avatarImg" class="rounded-full" width="80" height="80" [src]="user.avatar_url" [alt]="user.name" />
     <h4><a href="https://github.com/{{user.login}}" target="_blank" name="userLink">{{user.name}}</a></h4>
     <div name="typeDiv">{{user.type}}</div>
   </div>
   <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
     <p class="text-grey-darker text-base">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+      {{user.profile}}
     </p>
   </div>
   <div class="px-6 py-4">
-    <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#photography</span>
-    <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#travel</span>
-    <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">#winter</span>
+    <span *ngFor="let interest of interests" class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#{{interest}}</span>
   </div>
 </div>

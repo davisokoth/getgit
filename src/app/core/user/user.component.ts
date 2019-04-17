@@ -10,24 +10,21 @@ import { User } from '../../shared/models/user.model';
 export class UserComponent implements OnInit {
 
   @Input() user: User = {
-    id: null,
+    userId: null,
     login: '',
-    node_id: '',
     avatar_url: '',
-    gravatar_id: '',
     url: '',
-    html_url: '',
-    followers_url: '',
-    subscriptions_url: '',
-    organizations_url: '',
-    repos_url: '',
-    received_events_url: '',
+    repo_url: '',
     type: '',
     score: 0,
     followers: 0,
     name: '',
-    email: ''
+    email: '',
+    profile: ''
   };
+
+  interests = ['angular', 'nodejs', 'serverless', 'azure', 'testing'];
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {

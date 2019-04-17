@@ -17,6 +17,7 @@ export class NewUserComponent implements OnInit {
   email = new FormControl();
   name = new FormControl();
   avatar = new FormControl();
+  profile = new FormControl();
 
   constructor(
     private userService: UserService // , private router: Router, private formBuilder: FormBuilder
@@ -29,14 +30,11 @@ export class NewUserComponent implements OnInit {
     const user: User = {
       name: this.name.value,
       email: this.email.value,
-      id: uuid(),
-      avatar_url: this.avatar.value
+      userId: uuid(),
+      avatar_url: this.avatar.value,
+      profile: this.profile.value
     };
-    this.userService.postUser(user)
-    .subscribe(
-      data => console.log(data),
-      error => console.log(error)
-    );
+    this.userService.postUser(user);
     // this.router.navigateByUrl('/admin');
   }
 
