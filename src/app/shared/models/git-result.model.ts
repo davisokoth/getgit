@@ -1,4 +1,3 @@
-import {Deserializable} from './deserializable.model';
 import { User } from './user.model';
 
 export class SearchResult {
