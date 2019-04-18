@@ -11,16 +11,12 @@ export class ErrorNotificationComponent implements OnInit {
 
   message: any;
   subscription$: Subscription;
-  delay = 5000;
   constructor(
     private errorService: NotificationHandlerService
   ) {
     this.subscription$ = this.errorService.getNotification().subscribe(
       data => {
         this.message = data;
-        setTimeout(()=> {
-          this.message = null;
-        }, this.delay);
       },
       error => {
         this.message = error;

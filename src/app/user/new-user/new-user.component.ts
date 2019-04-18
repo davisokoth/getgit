@@ -20,7 +20,7 @@ export class NewUserComponent implements OnInit {
   profile = new FormControl();
 
   constructor(
-    private userService: UserService // , private router: Router, private formBuilder: FormBuilder
+    private userService: UserService,
   ) { }
 
   ngOnInit() { }
@@ -35,7 +35,14 @@ export class NewUserComponent implements OnInit {
       profile: this.profile.value
     };
     this.userService.postUser(user);
-    // this.router.navigateByUrl('/admin');
+    this.clearForm();
+  }
+
+  clearForm() {
+    this.name.setValue(null);
+    this.email.setValue(null);
+    this.avatar.setValue(null);
+    this.profile.setValue(null);
   }
 
 }

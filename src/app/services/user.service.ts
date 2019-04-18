@@ -4,6 +4,7 @@ import { User } from '../shared/models/user.model';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
+import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,10 @@ export class UserService {
   url = environment.URL;
   apiLink = environment.apiLink;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private nService: NotificationHandlerService
+  ) {}
 
   /** GET users from git api */
   getUsers(query: string, pageNo: number) {
@@ -40,7 +44,9 @@ export class UserService {
     };
     return this.http.post(`${this.apiLink}AddUser`, model)
     .subscribe(
-      data => data,
+      (data: User) => {
+        this.nService.handleError(data[0] + ' created successfully');
+      },
       error => error
     );
   }

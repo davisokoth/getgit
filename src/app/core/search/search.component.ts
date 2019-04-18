@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
     .subscribe(
       data => {
         this.loading = false;
-        this.errorService.handleError('Data fetch complete... ' + Math.random());
+        this.errorService.handleError('Data fetch complete.');
         this.emitResults(data);
       },
       error => {
