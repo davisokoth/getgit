@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule} from '@angular/common/http';
 import { UserModule } from './user/user.module';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import {SharedModule } from './shared/shared.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
+import { ErrorService } from './services/error.service';
+import { NotificationHandlerService } from './services/notification-handler.service';
 
 @NgModule({
-  imports: [ BrowserModule, HttpClientModule, CoreModule, UserModule, RouterModule.forRoot(routes)],
-  declarations: [ HeaderComponent, FooterComponent, AppComponent ],
+  imports: [ BrowserModule, CoreModule, UserModule, RouterModule.forRoot(routes), SharedModule],
+  declarations: [ AppComponent ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: NotificationHandlerService, useClass: ErrorService },
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from 'src/app/shared/models/user.model';
+import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
 
 @Component({
   selector: 'app-search',
@@ -16,7 +17,10 @@ export class SearchComponent implements OnInit {
   search: string;
   loading = false;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private errorService: NotificationHandlerService
+  ) { }
 
   ngOnInit() {
     this.loaded.emit();
@@ -28,11 +32,12 @@ export class SearchComponent implements OnInit {
     .subscribe(
       data => {
         this.loading = false;
+        this.errorService.handleError('Data fetch complete... ' + Math.random());
         this.emitResults(data);
       },
       error => {
         this.loading = false;
-        console.log(error);
+        this.errorService.handleError(error);
       }
     );
   }

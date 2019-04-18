@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
-import {ErrorHandler} from '@angular/core';
-// import {UNAUTHORIZED, BAD_REQUEST, FORBIDDEN} from 'http-status-codes';
-import {Router} from '@angular/router';
-// import {ToastsManager, Toast, ToastOptions} from 'ng2-toastr';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { NotificationHandlerService } from './notification-handler.service';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ErrorService implements ErrorHandler {
+@Injectable()
+export class ErrorService implements NotificationHandlerService {
 
-  static readonly REFRESH_PAGE_ON_TOAST_CLICK_MESSAGE: string = 'An error occurred: Please click this message to refresh';
-  static readonly DEFAULT_ERROR_TITLE: string = 'Something went wrong';
+  private subject: BehaviorSubject<any>;
+  notification: any;
 
-  constructor(private router: Router) {}
+  constructor() {
+    this.subject = new BehaviorSubject(null);
+  }
 
   public handleError(error: any) {
+    this.subject.next(error);
+  }
 
+  getNotification(): Observable<any> {
+    return this.subject.asObservable();
   }
 }
