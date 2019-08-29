@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
 
   siteName = 'Code Reviews | We got your back :)';
   faHome = faHome;
+  faUserPlus = faUserPlus;
   constructor() { }
 
   ngOnInit() {
