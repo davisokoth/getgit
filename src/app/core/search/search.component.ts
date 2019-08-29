@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from 'src/app/shared/models/user.model';
 import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
+import { IPNotification} from '../../shared/models/ipnotification';
 
 @Component({
   selector: 'app-search',
@@ -32,12 +33,12 @@ export class SearchComponent implements OnInit {
     .subscribe(
       data => {
         this.loading = false;
-        this.errorService.handleError('Data fetch complete.');
+        this.errorService.handleNotification('Success', 'Data fetch complete.', IPNotification.severity.LOW);
         this.emitResults(data);
       },
       error => {
         this.loading = false;
-        this.errorService.handleError(error);
+        this.errorService.handleNotification('ERROR', error, IPNotification.severity.HIGH);
       }
     );
   }

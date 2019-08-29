@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../shared/models/user.model';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
+import { IPNotification } from '../shared/models/ipnotification';
 
 @Injectable({
   providedIn: 'root',
@@ -20,13 +21,12 @@ export class UserService {
   ) {}
 
   /** GET users from git api */
-  getUsers(query: string, pageNo: number) {
-    return this.http.get<User[]>(`${this.apiLink}GetUsers`)
-    .pipe(map(res => {
-      return res.map(item => {
-        return new User(item.userId, item.name, item.email, item.profile, item.avatar_url, item.score = 0);
-      });
-    }));
+  getUsers(query: string, pageNo: number) : Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiLink}GetUsers`);
+  }
+
+  getAllUsers() : Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiLink}GetUsers`);
   }
 
   /** GET number of user's followers */
@@ -45,9 +45,9 @@ export class UserService {
     return this.http.post(`${this.apiLink}AddUser`, model)
     .subscribe(
       (data: User) => {
-        this.nService.handleError(data[0] + ' created successfully');
+        this.nService.handleNotification('SUCCESS', data[0].name + ' created successfully', IPNotification.severity.LOW);
       },
-      error => error
+      error => this.nService.handleNotification('ERROR', 'Profile creation failed', IPNotification.severity.HIGH)
     );
   }
 }

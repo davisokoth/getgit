@@ -6,15 +6,15 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ErrorNotificationComponent } from './error-notification/error-notification.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   imports: [
     CommonModule, FormsModule, ReactiveFormsModule, RouterModule
   ],
-  declarations: [HeaderComponent, FooterComponent, ErrorNotificationComponent],
+  declarations: [HeaderComponent, FooterComponent, NotificationComponent],
   exports: [
-    FormsModule, ReactiveFormsModule, HttpClientModule, ErrorNotificationComponent, HeaderComponent, FooterComponent
+    FormsModule, ReactiveFormsModule, HttpClientModule, NotificationComponent, HeaderComponent, FooterComponent
   ]
 })
 export class SharedModule { }

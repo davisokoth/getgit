@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
 import { Subscription } from 'rxjs';
+import { IPNotification } from '../models/ipnotification';
 
 @Component({
-  selector: 'app-error-notification',
-  templateUrl: './error-notification.component.html',
-  styleUrls: ['./error-notification.component.scss']
+  selector: 'app-notification',
+  templateUrl: './notification.component.html',
+  styleUrls: ['./notification.component.scss']
 })
-export class ErrorNotificationComponent implements OnInit {
+export class NotificationComponent implements OnInit {
 
-  message: any;
+  message: IPNotification;
   subscription$: Subscription;
   constructor(
-    private errorService: NotificationHandlerService
+    private nService: NotificationHandlerService
   ) {
-    this.subscription$ = this.errorService.getNotification().subscribe(
+    this.subscription$ = this.nService.getNotification().subscribe(
       data => {
         this.message = data;
+        console.log(this.message);
       },
       error => {
         this.message = error;

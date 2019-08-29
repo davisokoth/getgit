@@ -5,7 +5,7 @@ export abstract class NotificationHandlerService {
 
   constructor() { }
 
-  abstract handleError(notification: any);
+  abstract handleNotification(title: string, message: string, severity?: number);
 
   abstract getNotification();
 }

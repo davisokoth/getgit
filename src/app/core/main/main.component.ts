@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../shared/models/user.model';
+import { UserService } from 'src/app/services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -8,19 +10,22 @@ import {User} from '../../shared/models/user.model';
 })
 export class MainComponent implements OnInit {
 
-  users: User[];
-  total_count: number;
-  constructor() { }
+  users$: Observable<User[]>;
+  total_count: number = 100;
+  constructor(
+    private userService: UserService,
+  ) { }
 
   ngOnInit() {
+    this.getUsers();
   }
 
-  setUsers(users: User[]) {
-    this.users = users;
+  setUsers(users$: Observable<User[]>) {
+    this.users$ = users$;
   }
 
-  logLoaded() {
-    console.log('Loaded');
+  getUsers() {
+    this.users$ = this.userService.getAllUsers();
   }
 
 }

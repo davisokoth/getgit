@@ -7,7 +7,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
-import { ErrorService } from './services/error.service';
+import { NotificationService } from './services/notification.service';
 import { NotificationHandlerService } from './services/notification-handler.service';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { NotificationHandlerService } from './services/notification-handler.serv
   declarations: [ AppComponent ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    { provide: NotificationHandlerService, useClass: ErrorService },
+    { provide: NotificationHandlerService, useClass: NotificationService },
   ],
   bootstrap: [AppComponent]
 })
