@@ -2,12 +2,9 @@
 <div class="flex items-center justify-between flex-wrap bg-grey-darkest p-6 w-full z-10 pin-t">
     <nav class="container mx-auto flex">
         <div class="flex items-center flex-no-shrink text-white mr-6">
-            <svg class="fill-current h-5 w-5 mr-2" width="54" height="54" viewBox="0 0 54 54"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
-            </svg>
-            <span class="font-semibold text-xl tracking-tight">{{siteName}}</span>
+            <a class="no-underline font-bold inline-block text-sm px-2 leading-none text-grey-light hover:text-white" [routerLink]="['/']">
+                <fa-icon [icon]="faHome"></fa-icon> &nbsp; <span class="font-semibold text-xl tracking-tight">{{siteName}}</span>
+            </a>
         </div>
         <div class="block lg:hidden">
             <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-grey border-grey-dark hover:text-white hover:border-white">
@@ -17,17 +14,8 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
                 <li class="mr-3">
-                    <a class="no-underline font-bold inline-block text-sm px-2 leading-none text-grey-light hover:text-white" [routerLink]="['/']">
-                        <svg class="fill-current h-5 w-5 mr-2" width="10" height="10"  viewBox="0 0 20 20">
-                            <path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
-                        </svg>
-                    </a>
-                </li>
-                <li class="mr-3">
                     <a class="no-underline font-bold inline-block text-sm px-2 leading-none text-grey-light hover:text-white" [routerLink]="['newuser']">
-                        <svg class="fill-current h-5 w-5 mr-2" width="10" height="10" viewBox="0 0 20 20">
-                            <path d="M13.388,9.624h-3.011v-3.01c0-0.208-0.168-0.377-0.376-0.377S9.624,6.405,9.624,6.613v3.01H6.613c-0.208,0-0.376,0.168-0.376,0.376s0.168,0.376,0.376,0.376h3.011v3.01c0,0.208,0.168,0.378,0.376,0.378s0.376-0.17,0.376-0.378v-3.01h3.011c0.207,0,0.377-0.168,0.377-0.376S13.595,9.624,13.388,9.624z M10,1.344c-4.781,0-8.656,3.875-8.656,8.656c0,4.781,3.875,8.656,8.656,8.656c4.781,0,8.656-3.875,8.656-8.656C18.656,5.219,14.781,1.344,10,1.344z M10,17.903c-4.365,0-7.904-3.538-7.904-7.903S5.635,2.096,10,2.096S17.903,5.635,17.903,10S14.365,17.903,10,17.903z"></path>
-                        </svg>
+                        Sign Up
                     </a>    
                 </li>
             </ul>

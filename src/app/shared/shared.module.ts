@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -10,11 +11,11 @@ import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule, ReactiveFormsModule, RouterModule
+    CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule, RouterModule
   ],
   declarations: [HeaderComponent, FooterComponent, NotificationComponent],
   exports: [
-    FormsModule, ReactiveFormsModule, HttpClientModule, NotificationComponent, HeaderComponent, FooterComponent
+    FontAwesomeModule, FormsModule, ReactiveFormsModule, HttpClientModule, NotificationComponent, HeaderComponent, FooterComponent
   ]
 })
 export class SharedModule { }
