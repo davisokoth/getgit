@@ -1,0 +1,20 @@
+<div class="border border-blue rounded w-full p-1 text-grey-darker mb-3" *ngIf="response$ | async">
+    We got a response!!
+</div>
+<div class="w-full">
+    <form class="bg-white rounded w-1/2 h-full p-8 m-2">
+        <h2 class="login-header">Login</h2>
+        <hr>
+        <input 
+        type="email" 
+        class="shadow appearance-none border border-green rounded w-full p-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Email address" 
+        [formControl]="email"
+        required>
+        <input type="password" 
+        class="shadow appearance-none border border-green rounded w-full p-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="password" [formControl]="password" required>
+        <button (click)="login()" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
+        >Login</button>
+    </form>
+</div>

@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../../shared/models/user.model';
 import * as uuid from 'uuid4';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class NewUserComponent implements OnInit {
   avatar = new FormControl();
   profile = new FormControl();
 
+  response$: Observable<User>;
+
   constructor(
     private userService: UserService,
   ) { }
@@ -34,7 +37,7 @@ export class NewUserComponent implements OnInit {
       avatar_url: this.avatar.value,
       profile: this.profile.value
     };
-    this.userService.postUser(user);
+    this.response$ = this.userService.postUser(user);
     this.clearForm();
   }
 
@@ -44,5 +47,4 @@ export class NewUserComponent implements OnInit {
     this.avatar.setValue(null);
     this.profile.setValue(null);
   }
-
 }

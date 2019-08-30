@@ -42,12 +42,10 @@ export class UserService {
       avatar_url: user.avatar_url,
       profile: user.profile
     };
-    return this.http.post(`${this.apiLink}AddUser`, model)
-    .subscribe(
-      (data: User) => {
-        this.nService.handleNotification('SUCCESS', data[0].name + ' created successfully', IPNotification.severity.LOW);
-      },
-      error => this.nService.handleNotification('ERROR', 'Profile creation failed', IPNotification.severity.HIGH)
-    );
+    return this.http.post(`${this.apiLink}AddUser`, model);
+  }
+
+  login(user: User) {
+    return this.http.post(`${this.apiLink}LogUser`, user);
   }
 }
