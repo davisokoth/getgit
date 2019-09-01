@@ -6,7 +6,7 @@ describe('NotificationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [NotificationService]
-    }); 
+    });
   });
 
   it('should be created', () => {

@@ -1,9 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule, FormsModule, FormControl, FormGroup }    from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
 import { LoginComponent } from './login.component';
-import { User } from 'src/app/shared/models/user.model';
-import { UserService } from 'src/app/services/user.service';
-// import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user/user.service';
 
 class UserMockService {
   login(user: User) {
@@ -25,7 +24,6 @@ class UserMockService {
     };
   }
 }
-
 
 describe('LoginComponent', () => {
   let component: LoginComponent;

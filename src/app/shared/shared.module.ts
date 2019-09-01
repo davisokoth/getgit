@@ -8,12 +8,13 @@ import { HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotificationComponent } from './notification/notification.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   imports: [
     CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule, RouterModule
   ],
-  declarations: [HeaderComponent, FooterComponent, NotificationComponent],
+  declarations: [HeaderComponent, FooterComponent, NotificationComponent, LoadingComponent],
   exports: [
     FontAwesomeModule, FormsModule, ReactiveFormsModule, HttpClientModule, NotificationComponent, HeaderComponent, FooterComponent
   ]

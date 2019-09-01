@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../../shared/models/user.model';
-import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-users',
@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.users) {
+    if (this.users) {
       this.totalCount = this.users.length;
     }
     this.resetComponentState();

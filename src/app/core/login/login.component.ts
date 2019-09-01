@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule }    from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
-import { UserService } from '../../services/user.service';
-import { User } from '../../shared/models/user.model';
+import { UserService } from '../../services/user/user.service';
+import { User } from '../../models/user.model';
 import { Observable } from 'rxjs';
 
 @Component({

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserService } from '../../services/user/user.service';
 import { UserComponent } from './user.component';
-import { UserService } from 'src/app/services/user.service';
 import { Observable } from 'rxjs';
 
 describe('UserComponent', () => {

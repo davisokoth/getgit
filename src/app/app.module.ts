@@ -7,8 +7,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
-import { NotificationService } from './services/notification.service';
-import { NotificationHandlerService } from './services/notification-handler.service';
+import { NotificationService } from './services/notification/notification.service';
+import { NotificationHandlerService } from './services/notification/notification-handler.service';
 
 @NgModule({
   imports: [ BrowserModule, CoreModule, UserModule, RouterModule.forRoot(routes), SharedModule],

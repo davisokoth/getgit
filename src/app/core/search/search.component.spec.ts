@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search.component';
-import { SearchResult } from '../../shared/models/git-result.model';
-import { User } from '../../shared/models/user.model';
-import { UserService } from 'src/app/services/user.service';
-import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
+import { SearchResult } from '../../models/search-result.model';
+import { User } from '../../models/user.model';
+import { NotificationHandlerService } from '../../services/notification/notification-handler.service';
+import { UserService } from '../../services/user/user.service';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;

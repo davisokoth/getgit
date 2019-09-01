@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UsersComponent } from './users.component';
 import { Component, Input } from '@angular/core';
-import { User } from 'src/app/shared/models/user.model';
-import { UserService } from 'src/app/services/user.service';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user/user.service';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;

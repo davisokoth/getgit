@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NotificationComponent } from './notification.component';
-import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
+import { NotificationHandlerService } from '../../services/notification/notification-handler.service';
 
 class NotificationHandlerMockService {
   getNotification() {
@@ -30,7 +30,7 @@ describe('NotificationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ NotificationComponent ]
-    })
+    });
     TestBed.overrideComponent(NotificationComponent, {
       set: {
         providers: [

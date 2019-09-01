@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { User } from 'src/app/shared/models/user.model';
-import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
-import { IPNotification} from '../../shared/models/ipnotification';
-import { SearchResult } from 'src/app/shared/models/git-result.model';
+import { IPNotification } from '../../models/ipnotification';
+import { SearchResult } from '../../models/search-result.model';
+import { NotificationHandlerService } from '../../services/notification/notification-handler.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-search',

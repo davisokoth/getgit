@@ -12,7 +12,7 @@ describe('UsersService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [UserService]
-    }); 
+    });
     injector = getTestBed();
     service = injector.get(UserService);
     httpMock = injector.get(HttpTestingController);

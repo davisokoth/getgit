@@ -9,7 +9,6 @@
     "build": "ngtw build && ng build --prod",
     "deploy": "src/scripts/deploy.sh",
     "test": "jest",
-    "mocha:test": "./node_modules/mocha/bin/mocha --require ts-node/register ./**/*.spec.ts",
     "lint": "ng lint",
     "e2e": "npm run cypress:open",
     "test:watch": "jest --watch"

@@ -1,2 +1,2 @@
 <app-search (fetchResults)="setUsers($event)"></app-search>
-<app-users *ngIf="users$ | async as users" [users]="users"></app-users>
+<app-users *ngIf="result$ | async as users" [users]="users"></app-users>

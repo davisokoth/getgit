@@ -1,13 +1,15 @@
 import { Component, Input} from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { User } from '../../models/user.model';
+import { NotificationHandlerService } from '../../services/notification/notification-handler.service';
+import { UserService } from '../../services/user/user.service';
 import { MainComponent } from './main.component';
-import { User } from 'src/app/shared/models/user.model';
-import { UserService } from 'src/app/services/user.service';
-import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
+import { of } from 'rxjs';
 
 describe('MainComponent', () => {
   let component: MainComponent;
   let fixture: ComponentFixture<MainComponent>;
+  let compiled;
 
   @Component({selector: 'app-search', template: ''})
   class SearchStubComponent {
@@ -15,42 +17,19 @@ describe('MainComponent', () => {
   }
 
   class UserMockService {
-    login(user: User) {
-      return {
-        total_count: 2,
-        incomplete_results: false,
-        items: [
-          {
-            login: 'janedoe@jd.com',
-            email: 'janedoe@jd.com',
-            name: 'Jane'
-          },
-          {
-            login: 'janedoe@jd.com',
-            email: 'janedoe@jd.com',
-            name: 'Jane'
-          }
-        ]
-      };
-    }
-
     getAllUsers() {
-      return {
-        total_count: 2,
-        incomplete_results: false,
-        items: [
-          {
-            login: 'janedoe@jd.com',
-            email: 'janedoe@jd.com',
-            name: 'Jane'
-          },
-          {
-            login: 'janedoe@jd.com',
-            email: 'janedoe@jd.com',
-            name: 'Jane'
-          }
-        ]
-      };
+      return of([
+        {
+          login: 'janedoe@jd.com',
+          email: 'janedoe@jd.com',
+          name: 'Jane'
+        },
+        {
+          login: 'janedoe@jd.com',
+          email: 'janedoe@jd.com',
+          name: 'Jane'
+        }
+      ]);
     }
   }
 
@@ -77,7 +56,6 @@ describe('MainComponent', () => {
 
   @Component({selector: 'app-users', template: ''})
   class UsersStubComponent {
-    @Input() totalCount = 0;
     @Input() users: User[] = [{
       login: 'janedoe@jd.com',
       email: 'janedoe@jd.com',
@@ -109,10 +87,21 @@ describe('MainComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MainComponent);
     component = fixture.componentInstance;
+    compiled = fixture.debugElement.nativeElement;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show a search bar', () => {
+    expect(compiled.querySelector('app-search')).not.toBeNull();
+  });
+
+  it('should display a few users on load', async () => {
+    await fixture.whenStable();
+    fixture.detectChanges();
+    expect(compiled.querySelector('app-users')).toBeTruthy();
   });
 });

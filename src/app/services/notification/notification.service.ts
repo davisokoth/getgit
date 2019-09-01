@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { IPNotification } from '../../models/ipnotification';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { NotificationHandlerService } from './notification-handler.service';
-import { IPNotification } from '../shared/models/ipnotification';
 
 @Injectable()
 export class NotificationService implements NotificationHandlerService {

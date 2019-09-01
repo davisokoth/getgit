@@ -11,7 +11,7 @@ export class IPNotification {
         this.message = message;
         this._severity = severity;
         severity === 1 ?
-            this.style = 'border-red-light bg-red-lightest text-red-dark' : 
+            this.style = 'border-red-light bg-red-lightest text-red-dark' :
             this.style = 'border-green-light bg-green-lightest text-green-dark';
     }
 }

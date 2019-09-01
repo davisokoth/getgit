@@ -1,21 +1,25 @@
 language: node_js
 node_js:
-  - "8"
+  - "10"
 dist: trusty
-sudo: false
+sudo: required
 
 cache:
   directories:
-    - node_modules
+    - "node_modules"
+
+branches:
+  only:
+  - master
+  - devel
+before_script:
+  - npm install -g @angular/cli --yes
 
 addons:
   chrome: stable
 
-before_script:
-  - npm install -g @angular/cli --yes
-
 script:
-  - npm run lint
-  - xvfb-run npm run test
-  - npm run build
-  - xvfb-run npm run e2e
+- npm run lint
+- npm run test
+- ng build --prod --base-href /
+- npx cypress run

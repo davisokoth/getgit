@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "rootDir": "./",
     "outDir": "./dist/",
     "sourceMap": true,
     "declaration": false,
@@ -10,7 +11,12 @@
     "experimentalDecorators": true,
     "paths": {
       "core-js/es7/reflect": ["node_modules/core-js/proposals/reflect-metadata"],
-      "core-js/es6/*": ["node_modules/core-js/es/*"]
+      "core-js/es6/*": ["node_modules/core-js/es/*"],
+      "@services": ["src/app/services"],
+      "@core": ["src/app/core"],
+      "@shared": ["src/app/shared"],
+      "@user": ["src/app/user"],
+      "@models": ["src/app/models"],
     },
     "target": "es5",
     "typeRoots": [
