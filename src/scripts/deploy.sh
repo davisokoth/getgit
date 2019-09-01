@@ -1,7 +1,7 @@
 echo "Beginning build..."
 echo "==================================="
 echo ""
-ngtw build && ng build --prod --base-href / --build-optimizer --output-hashing=all
+npm install && ngtw build && ng build --prod --base-href / --build-optimizer --output-hashing=all
 echo ""
 echo "Now deploying..."
 echo ""
