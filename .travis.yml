@@ -13,7 +13,7 @@ branches:
   - master
   - devel
 before_script:
-  - npm install -g @angular/cli --yes
+  - npm install -g concurrently @angular/cli --yes
 
 addons:
   chrome: stable
@@ -21,5 +21,4 @@ addons:
 script:
 - npm run lint
 - npm run test
-- ng build --prod --base-href /
-- npx cypress run
+- npm run e2e

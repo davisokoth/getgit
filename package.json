@@ -10,7 +10,7 @@
     "deploy": "src/scripts/deploy.sh",
     "test": "jest",
     "lint": "ng lint",
-    "e2e": "npm run cypress:open",
+    "e2e": "ng serve --aot & npx cypress run",
     "test:watch": "jest --watch"
   },
   "private": true,
