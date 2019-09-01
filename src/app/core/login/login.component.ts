@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule }    from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../../shared/models/user.model';
@@ -11,10 +12,11 @@ import { Observable } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl(),
+    password: new FormControl()
+  });
   isSubmitted  = false;
-  email = new FormControl();
-  password = new FormControl();
 
   response$: Observable<User>;
 
@@ -22,22 +24,20 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   login() {
     this.isSubmitted = true;
     const user: User = {
-      password: this.password.value,
-      email: this.email.value
+      password: this.loginForm.get('password').value,
+      email: this.loginForm.get('email').value
     };
     this.response$ = this.userService.login(user);
     this.clearForm();
   }
 
   clearForm() {
-    this.email.setValue(null);
-    this.password.setValue(null);
+    this.loginForm.reset();
   }
 
 }

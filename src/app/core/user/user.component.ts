@@ -28,7 +28,7 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.getUserFollowers();
+    // this.getUserFollowers();
   }
 
   getUserFollowers() {

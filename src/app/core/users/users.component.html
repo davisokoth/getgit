@@ -5,8 +5,8 @@
   <span name="totalCount"> &nbsp; | &nbsp; {{totalCount}} results</span>
 </div>
 <div class="flex  flex-wrap mb-4">
-    <div class="w-1/4 mb-3" *ngFor="let result of users">
-        <app-user [user]="result"></app-user>
+    <div class="w-1/4 mb-3" *ngFor="let user of users">
+        <app-user [user]="user"></app-user>
     </div>
 </div>
 <div *ngIf="loading" class="loadingDiv">

@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { User } from 'src/app/shared/models/user.model';
 import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
 import { IPNotification} from '../../shared/models/ipnotification';
+import { SearchResult } from 'src/app/shared/models/git-result.model';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,7 @@ import { IPNotification} from '../../shared/models/ipnotification';
 export class SearchComponent implements OnInit {
 
   @Input() endpoint;
-  @Output() fetchResults: EventEmitter<User[]> = new EventEmitter<User[]>();
+  @Output() fetchResults: EventEmitter<SearchResult> = new EventEmitter<SearchResult>();
   @Output() loaded: EventEmitter<any> = new EventEmitter();
 
   search: string;
@@ -43,7 +44,7 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  emitResults(results: User[]) {
+  emitResults(results: SearchResult) {
     this.fetchResults.emit(results);
   }
 }

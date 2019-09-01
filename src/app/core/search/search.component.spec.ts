@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search.component';
-import { GitResult } from '../../shared/models/git-result.model';
+import { SearchResult } from '../../shared/models/git-result.model';
 import { User } from '../../shared/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -11,6 +12,27 @@ describe('SearchComponent', () => {
 
   class UserMockService {
     getGitUsers(search, pageNo) {
+      return {
+        total_count: 2,
+        incomplete_results: false,
+        items: [
+          {
+            login: 'janedoe@jd.com',
+            email: 'janedoe@jd.com',
+            name: 'Jane'
+          },
+          {
+            login: 'janedoe@jd.com',
+            email: 'janedoe@jd.com',
+            name: 'Jane'
+          }
+        ]
+      };
+    }
+  }
+
+  class NotificationHandlerMockService {
+    getNotification() {
       return [{
         total_count: 2,
         incomplete_results: false,
@@ -38,7 +60,8 @@ describe('SearchComponent', () => {
     TestBed.overrideComponent(SearchComponent, {
       set: {
         providers: [
-          { provide: UserService, useClass: UserMockService }
+          { provide: UserService, useClass: UserMockService },
+          { provide: NotificationHandlerService, useClass: NotificationHandlerMockService }
         ]
       }
     });
@@ -61,7 +84,7 @@ describe('SearchComponent', () => {
 
   it('should emit search results', () => {
     spyOn(component.fetchResults, 'emit');
-    const item = new GitResult(1, false, [new User('davisokoth', 'www')]);
+    const item = new SearchResult(1, false, [new User({name: 'davisokoth', email: 'www'})]);
     component.emitResults(item);
     expect(component.fetchResults.emit).toHaveBeenCalledWith(item);
   });

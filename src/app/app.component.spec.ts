@@ -22,12 +22,18 @@ class MainStubComponent  implements OnInit {
   }
 }
 
+@Component({selector: 'app-notification', template: ''})
+class NotificationStubComponent  implements OnInit {
+  ngOnInit() {
+  }
+}
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, RouterModule.forRoot([])],
       declarations: [
-        AppComponent, FooterStubComponent, HeaderStubComponent, MainStubComponent
+        AppComponent, FooterStubComponent, HeaderStubComponent, MainStubComponent, NotificationStubComponent
       ],
       providers: [{provide: APP_BASE_HREF, useValue: '/my/app'}]
     }).compileComponents();

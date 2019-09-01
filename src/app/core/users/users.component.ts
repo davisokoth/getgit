@@ -15,7 +15,7 @@ export class UsersComponent implements OnInit {
   pageNumber = 1;
   prevPage = 0;
   nextPage = 0;
-  @Input() totalCount = 0;
+  totalCount: number;
   loading = false;
 
   constructor(
@@ -23,6 +23,9 @@ export class UsersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if(this.users) {
+      this.totalCount = this.users.length;
+    }
     this.resetComponentState();
   }
 

@@ -1,9 +1,13 @@
 import { TestBed } from '@angular/core/testing';
-
 import { NotificationService } from './notification.service';
 
-describe('ErrorService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe('NotificationService', () => {
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [NotificationService]
+    }); 
+  });
 
   it('should be created', () => {
     const service: NotificationService = TestBed.get(NotificationService);

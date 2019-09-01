@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../shared/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { Observable } from 'rxjs';
+import { SearchResult } from 'src/app/shared/models/git-result.model';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-main',
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class MainComponent implements OnInit {
 
+  results$: Observable<SearchResult>;
   users$: Observable<User[]>;
   total_count: number = 100;
   constructor(
@@ -20,8 +22,8 @@ export class MainComponent implements OnInit {
     this.getUsers();
   }
 
-  setUsers(users$: Observable<User[]>) {
-    this.users$ = users$;
+  setUsers(results: Observable<SearchResult>) {
+    this.results$ = results;
   }
 
   getUsers() {

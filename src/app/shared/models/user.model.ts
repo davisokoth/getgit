@@ -13,13 +13,13 @@ export class User {
     profile?: string;
     password?: string;
 
-    constructor(id: string, name: string, email: string, profile: string, avatar_url: string, score: number, password: string) {
-        this.userId = id;
-        this.name = name;
-        this.email = email;
-        this.profile = profile;
-        this.avatar_url = avatar_url;
-        this.score = score;
-        this.password = password;
+    constructor(model: any) {
+        this.userId = model.id;
+        this.name = model.name;
+        this.email = model.email;
+        this.profile = model.profile;
+        this.avatar_url = model.avatar_url;
+        this.score = model.score;
+        this.password = model.password;
     }
 }

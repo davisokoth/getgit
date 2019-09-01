@@ -15,15 +15,7 @@ export class NotificationComponent implements OnInit {
   constructor(
     private nService: NotificationHandlerService
   ) {
-    this.subscription$ = this.nService.getNotification().subscribe(
-      data => {
-        this.message = data;
-        console.log(this.message);
-      },
-      error => {
-        this.message = error;
-      }
-    );
+    this.subscription$ = this.nService.getNotification();
   }
 
   ngOnInit() { }

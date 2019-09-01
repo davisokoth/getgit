@@ -13,24 +13,18 @@ describe('UsersComponent', () => {
     @Input() user: User = {
       id: 1,
       login: 'jd',
-      node_id: 'poidoifoi-ioi',
       avatar_url: '',
-      gravatar_id: '',
       url: 'k iook  i',
-      html_url: '',
-      followers_url: '',
-      subscriptions_url: '',
-      organizations_url: '',
-      repos_url: '',
-      received_events_url: '',
       type: '',
       score: 0,
-      followers: 0
+      followers: 0,
+      profile: '',
+      password: 'password'
     };
   }
 
   class UserMockService {
-    getGitUsers(search, pageNo) {
+    getUsers(search, pageNo) {
       return [{
         total_count: 2,
         incomplete_results: false,

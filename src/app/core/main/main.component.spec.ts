@@ -1,7 +1,9 @@
 import { Component, Input} from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainComponent } from './main.component';
-import { User } from '../../shared/models/user.model';
+import { User } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/services/user.service';
+import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -11,25 +13,80 @@ describe('MainComponent', () => {
   class SearchStubComponent {
     @Input() endPoint: string;
   }
+
+  class UserMockService {
+    login(user: User) {
+      return {
+        total_count: 2,
+        incomplete_results: false,
+        items: [
+          {
+            login: 'janedoe@jd.com',
+            email: 'janedoe@jd.com',
+            name: 'Jane'
+          },
+          {
+            login: 'janedoe@jd.com',
+            email: 'janedoe@jd.com',
+            name: 'Jane'
+          }
+        ]
+      };
+    }
+
+    getAllUsers() {
+      return {
+        total_count: 2,
+        incomplete_results: false,
+        items: [
+          {
+            login: 'janedoe@jd.com',
+            email: 'janedoe@jd.com',
+            name: 'Jane'
+          },
+          {
+            login: 'janedoe@jd.com',
+            email: 'janedoe@jd.com',
+            name: 'Jane'
+          }
+        ]
+      };
+    }
+  }
+
+  class NotificationHandlerMockService {
+    getNotification() {
+      return [{
+        total_count: 2,
+        incomplete_results: false,
+        items: [
+          {
+            login: 'janedoe@jd.com',
+            email: 'janedoe@jd.com',
+            name: 'Jane'
+          },
+          {
+            login: 'janedoe@jd.com',
+            email: 'janedoe@jd.com',
+            name: 'Jane'
+          }
+        ]
+      }];
+    }
+  }
+
   @Component({selector: 'app-users', template: ''})
   class UsersStubComponent {
     @Input() totalCount = 0;
     @Input() users: User[] = [{
-      id: 1,
-      login: 'jd',
-      node_id: 'poidoifoi-ioi',
-      avatar_url: '',
-      gravatar_id: '',
-      url: 'k iook  i',
-      html_url: '',
-      followers_url: '',
-      subscriptions_url: '',
-      organizations_url: '',
-      repos_url: '',
-      received_events_url: '',
-      type: '',
-      score: 0,
-      followers: 0
+      login: 'janedoe@jd.com',
+      email: 'janedoe@jd.com',
+      name: 'Jane'
+    },
+    {
+      login: 'janedoe@jd.com',
+      email: 'janedoe@jd.com',
+      name: 'Jane'
     }];
   }
 
@@ -38,8 +95,15 @@ describe('MainComponent', () => {
       declarations: [
         MainComponent, UsersStubComponent, SearchStubComponent
       ]
-    })
-    .compileComponents();
+    });
+    TestBed.overrideComponent(MainComponent, {
+      set: {
+        providers: [
+          { provide: UserService, useClass: UserMockService },
+          { provide: NotificationHandlerService, useClass: NotificationHandlerMockService }
+        ]
+      }
+    });
   }));
 
   beforeEach(() => {

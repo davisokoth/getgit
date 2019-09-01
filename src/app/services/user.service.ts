@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../shared/models/user.model';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
-import { IPNotification } from '../shared/models/ipnotification';
+// import { NotificationHandlerService } from 'src/app/services/notification-handler.service';
+import { SearchResult } from '../shared/models/git-result.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,12 +16,12 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private nService: NotificationHandlerService
+    // private nService: NotificationHandlerService
   ) {}
 
   /** GET users from git api */
-  getUsers(query: string, pageNo: number) : Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiLink}GetUsers`);
+  getUsers(query: string, pageNo: number) : Observable<SearchResult> {
+    return this.http.get<SearchResult>(`${this.apiLink}GetUsers`);
   }
 
   getAllUsers() : Observable<User[]> {
