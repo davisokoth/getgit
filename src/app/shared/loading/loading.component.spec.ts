@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { LoadingComponent } from './loading.component';
 
 describe('LoadingComponent', () => {
@@ -20,5 +21,11 @@ describe('LoadingComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display a loading visual', async () => {
+    await fixture.whenStable();
+    fixture.detectChanges();
+    expect(fixture.debugElement.query(By.css('#loading'))).toBeTruthy();
   });
 });

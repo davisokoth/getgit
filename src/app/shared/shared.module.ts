@@ -16,7 +16,8 @@ import { LoadingComponent } from './loading/loading.component';
   ],
   declarations: [HeaderComponent, FooterComponent, NotificationComponent, LoadingComponent],
   exports: [
-    FontAwesomeModule, FormsModule, ReactiveFormsModule, HttpClientModule, NotificationComponent, HeaderComponent, FooterComponent
+    FontAwesomeModule, FooterComponent, FormsModule, HeaderComponent, HttpClientModule,
+    LoadingComponent, NotificationComponent, ReactiveFormsModule
   ]
 })
 export class SharedModule { }

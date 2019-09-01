@@ -11,6 +11,9 @@ describe('MainComponent', () => {
   let fixture: ComponentFixture<MainComponent>;
   let compiled;
 
+  @Component({selector: 'app-loading', template: ''})
+  class LoadingStubComponent { }
+
   @Component({selector: 'app-search', template: ''})
   class SearchStubComponent {
     @Input() endPoint: string;
@@ -71,7 +74,7 @@ describe('MainComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        MainComponent, UsersStubComponent, SearchStubComponent
+        LoadingStubComponent, MainComponent, SearchStubComponent, UsersStubComponent
       ]
     });
     TestBed.overrideComponent(MainComponent, {
@@ -99,7 +102,7 @@ describe('MainComponent', () => {
     expect(compiled.querySelector('app-search')).not.toBeNull();
   });
 
-  it('should display a few users on load', async () => {
+  it('should display users on page load', async () => {
     await fixture.whenStable();
     fixture.detectChanges();
     expect(compiled.querySelector('app-users')).toBeTruthy();

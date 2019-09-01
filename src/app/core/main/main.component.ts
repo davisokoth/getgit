@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchResult } from '../../models/search-result.model';
 import { UserService } from '../../services/user/user.service';
 import { Observable } from 'rxjs';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 
 @Component({
   selector: 'app-main',

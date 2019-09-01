@@ -33,7 +33,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, RouterModule.forRoot([])],
       declarations: [
-        AppComponent, FooterStubComponent, HeaderStubComponent, MainStubComponent, NotificationStubComponent
+        AppComponent, FooterStubComponent, HeaderStubComponent,
+        MainStubComponent, NotificationStubComponent
       ],
       providers: [{provide: APP_BASE_HREF, useValue: '/my/app'}]
     }).compileComponents();

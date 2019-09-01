@@ -1,2 +1,5 @@
 <app-search (fetchResults)="setUsers($event)"></app-search>
-<app-users *ngIf="result$ | async as users" [users]="users"></app-users>
+<app-users *ngIf="result$ | async as users; else indicator" [users]="users"></app-users>
+<ng-template #indicator>
+    <app-loading></app-loading>
+</ng-template>
